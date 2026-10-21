@@ -11,6 +11,9 @@
 <meta property="og:image" content="https://jiangye444.github.io/img/og-home.jpg">
 <meta property="og:url" content="https://jiangye444.github.io/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%230b57d0'/><text x='50' y='64' font-size='46' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>YJ</text></svg>">
 </head>
@@ -25,7 +28,21 @@
   <h1>I build hardware that has to work.</h1>
   <p class="lead">A sub-$40 reaction-wheel bicycle that balances itself, cryogenic mechanisms that run at 7 mK inside a dark-matter experiment, and control systems for 10+ campus buildings. Mechanical engineering junior at the University of Minnesota (GPA 4.00, minors in computer science and mathematics, May 2028).</p>
   <p class="links"><a class="btn" href="#projects">See the projects</a> <a href="resume/Ye_Jiang_Resume.pdf">Resume (PDF)</a> <a href="https://www.linkedin.com/in/ye-jiang-102b5538a/">LinkedIn</a> <a href="mailto:jian1130@umn.edu">jian1130@umn.edu</a></p>
+  <figure class="hero-media">
+    <video id="heroLoop" autoplay muted loop playsinline preload="auto" poster="img/bike-loop-poster.jpg" aria-label="Reaction-wheel bicycle balancing on its own">
+      <source src="img/bike-loop.mp4" type="video/mp4">
+    </video>
+    <figcaption>My reaction-wheel bicycle holding itself upright. <a href="bike.html">How it works →</a></figcaption>
+  </figure>
 </section>
+
+<div class="facts home-facts">
+  <div class="fact"><b>7 mK</b><span>dilution refrigerator I help run</span></div>
+  <div class="fact"><b>0.54 W</b><span>heat-load test on the 4 K stage heater mount I designed</span></div>
+  <div class="fact"><b>$39.54</b><span>total build cost of the self-balancing bike</span></div>
+  <div class="fact"><b>10+</b><span>campus buildings with my Metasys graphics</span></div>
+</div>
+<script>if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){var v=document.getElementById('heroLoop');if(v){v.removeAttribute('autoplay');v.pause();}}</script>
 
 <h2 id="projects">Projects</h2>
 <div class="grid">
