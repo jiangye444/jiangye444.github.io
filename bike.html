@@ -4,77 +4,51 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Reaction-wheel self-balancing bicycle · Ye Jiang</title>
-<meta name="description" content="A $39.54 bicycle that balances itself while standing still using a reaction wheel: SolidWorks design, 3D-printed and laser-cut parts, Arduino + MPU-6050 IMU, brushless motor, PID control in C++.">
+<meta name="description" content="A bike that balances itself while standing still using a reaction wheel. SolidWorks, 3D printing, Arduino, PID control. $39.54 in parts.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reaction-wheel self-balancing bicycle · Ye Jiang">
-<meta property="og:description" content="A $39.54 bicycle that balances itself while standing still. Designed, built, wired and programmed from scratch.">
+<meta property="og:description" content="A bike that balances itself while standing still using a reaction wheel. SolidWorks, 3D printing, Arduino, PID control. $39.54 in parts.">
 <meta property="og:image" content="https://jiangye444.github.io/img/bike-og.jpg">
 <meta property="og:url" content="https://jiangye444.github.io/bike.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<script>(function(){var m='auto';try{m=localStorage.getItem('theme')||'auto'}catch(e){}var r=document.documentElement;r.setAttribute('data-theme-mode',m);if(m==='light'||m==='dark')r.setAttribute('data-theme',m);})();</script>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='22' fill='%23121317'/><text x='50' y='63' font-size='40' text-anchor='middle' fill='%23f4f3ee' font-family='monospace' font-weight='700'>YJ</text><circle cx='84' cy='84' r='12' fill='%23e8501c'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var m="auto";try{m=localStorage.getItem("theme")||"auto"}catch(e){}var r=document.documentElement;r.setAttribute("data-theme-mode",m);if(m==="light"||m==="dark")r.setAttribute("data-theme",m);})();</script>
+<link rel="stylesheet" href="style.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231d1d1f'/><text x='50' y='66' font-size='46' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>YJ</text></svg>">
 </head>
-<body class="project">
-<header class="site">
-  <div class="bar">
-    <a class="brand" href="./"><span class="mark">YJ</span><span class="full">Ye Jiang</span></a>
-    <nav><a href="./#projects">Projects</a><a href="./#work">Research</a><a href="resume/Ye_Jiang_Resume.pdf">Resume</a><a href="./#contact">Contact</a></nav>
-    <button class="theme-toggle" type="button" aria-label="Colour theme: automatic" title="Theme: auto (follows your system)">
-      <svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>
-      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
-    </button>
-  </div>
-</header>
+<body>
+<header class="site"><div class="wrap">
+<a class="name" href="./">Ye Jiang</a>
+<nav><a href="./#projects">Projects</a><a href="resume/Ye_Jiang_Resume.pdf">Resume</a><a href="mailto:jian1130@umn.edu">Email</a><button class="theme-toggle" type="button" aria-label="Colour theme: automatic" title="Theme: auto (follows your system)">
+<svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>
+<svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+</button></nav>
+</div></header>
 <main class="wrap">
-  <section class="phead">
-    <a class="back mono" href="./#projects">← All projects</a>
-    <div class="eyebrow mono">Project 01 · Spring 2026 · ME 2011, University of Minnesota</div>
-    <h1>Reaction-wheel self-balancing bicycle</h1>
-    <p class="sub">A bicycle that stays upright while standing still, using a spinning reaction wheel instead of steering. Designed, built, wired and programmed by me, start to finish.</p>
-    <ul class="chips"><li>SolidWorks</li><li>FDM 3D printing</li><li>Laser cutting</li><li>Arduino UNO</li><li>MPU-6050 IMU</li><li>Brushless motor</li><li>C++ PID</li></ul>
-  </section>
+<section class="page-head">
+<a class="back" href="./#projects">← All projects</a>
+<h1>Reaction-wheel self-balancing bicycle</h1>
+<p class="meta">Spring 2026 · ME 2011, University of Minnesota · solo project</p>
+</section>
+<p>A bike that balances itself while standing still. Instead of steering, it uses a spinning reaction wheel: when the frame starts to tip, the controller speeds the wheel up, and the reaction torque pushes the frame back. I designed and built it on my own for ME 2011, for $39.54 in parts.</p>
+<p class="tools"><b>Tools:</b> SolidWorks, FDM printing, laser cutting, Arduino UNO, MPU-6050 IMU, Nidec 24H brushless motor, C++.</p>
+<figure><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/UqLc3zL4h2Y" title="Reaction-wheel self-balancing bicycle demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption>Balancing on two wheels while standing still.</figcaption></figure>
 
-  <div class="article">
-    <figure class="fig" style="margin-top:6px"><div class="media video"><iframe src="https://www.youtube-nocookie.com/embed/UqLc3zL4h2Y" title="Reaction-wheel self-balancing bicycle demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <figcaption>Holding balance on two wheels while standing still. The reaction wheel is the laser-cut disc at the centre of the frame.</figcaption></figure>
+<h2>How it works</h2>
+<p>A bike standing still is an inverted pendulum: once it starts to fall, gravity makes it fall faster. The MPU-6050 measures the tilt angle and rate, and a PID loop on the Arduino turns that into a speed command for the brushless motor. Speeding the wheel up pushes the frame the other way. A wheel only makes torque while it's accelerating, so the controller has to react early instead of hard.</p>
 
-    <div class="specs mini">
-      <div class="spec"><div class="k mono">Build cost</div><div class="v">$39.54</div><p>Full bill of materials below</p></div>
-      <div class="spec"><div class="k mono">Team</div><div class="v">1</div><p>Person, start to finish</p></div>
-      <div class="spec"><div class="k mono">Control</div><div class="v">PID</div><p>Closed loop in C++ on an Arduino UNO</p></div>
-      <div class="spec"><div class="k mono">Sensing</div><div class="v">IMU</div><p>MPU-6050 tilt angle and rate</p></div>
-    </div>
+<h2>Design</h2>
+<div class="two">
+<figure><img src="img/bike-cad.jpg" alt="SolidWorks model of the bicycle"><figcaption>SolidWorks assembly.</figcaption></figure>
+<figure><img src="img/bike-detail.jpg" alt="Reaction wheel, motor and electronics"><figcaption>Reaction wheel, motor and the Arduino/IMU stack.</figcaption></figure>
+</div>
+<p>I kept everything cheap and makeable with what I had: 3D-printed frame parts running on 608z bearings, a laser-cut acrylic disc for the reaction wheel, an Arduino UNO, an MPU-6050 and a Nidec 24H brushless motor.</p>
 
-    <div class="summary">
-      <span class="mono">In 60 seconds</span>
-      <ul>
-        <li><b>Goal:</b> a bicycle that stays upright while standing still, using a reaction wheel instead of steering.</li>
-        <li><b>Built:</b> SolidWorks model → 3D-printed frame parts on 608z bearings and a laser-cut reaction wheel → Arduino UNO + MPU-6050 IMU → Nidec 24H brushless motor driving the wheel → PID loop written in C++.</li>
-        <li><b>Result:</b> holds unassisted balance on two wheels while stationary (video above). Total parts cost $39.54.</li>
-        <li><b>Hardest bug:</b> the motor would not respond to its driver. An isolated test program showed the supplier had swapped the PWM, direction and start signals against their own documentation.</li>
-        <li><b>Then:</b> reinforced the frame, added servo steering, non-blocking stepper propulsion, a servo-actuated kickstand that retracts for hands-free launches, and voltage regulation.</li>
-      </ul>
-    </div>
-
-    <h2>Why a reaction wheel</h2>
-    <p>A stationary bicycle is an inverted pendulum: once it tips, gravity pulls it further. A reaction wheel fixes that without any forward motion. Spinning the wheel up in one direction pushes a reaction torque back on the frame in the other, so the controller can "catch" a tilt the instant the IMU sees it. The trade-off is that a wheel can only produce torque while it is accelerating, so the controller has to keep the wheel near its resting speed and act early rather than hard.</p>
-
-    <h2>Design</h2>
-    <div class="two">
-      <figure class="fig"><div class="media"><img src="img/bike-cad.jpg" alt="SolidWorks model of the bicycle"></div><figcaption>SolidWorks assembly. Frame parts were sized for an FDM printer; the flywheel for the laser cutter.</figcaption></figure>
-      <figure class="fig"><div class="media"><img src="img/bike-detail.jpg" alt="Reaction wheel, motor and electronics"></div><figcaption>Reaction wheel, brushless motor and the Arduino/IMU stack.</figcaption></figure>
-    </div>
-    <p>Everything was chosen to be cheap and makeable with the tools I had: printed structure running on 608z bearings, a laser-cut disc for the reaction wheel (no machining needed), an Arduino UNO for control, an MPU-6050 for tilt angle and rate, and a high-speed Nidec 24H brushless motor. The whole build came to $39.54.</p>
-
-    <h2>Bill of materials</h2>
-    <div class="bom"><table>
+<h2>Parts list</h2>
+<div class="bom"><table>
 <thead><tr><th>Part</th><th>Qty</th><th>Source</th><th>Cost</th></tr></thead><tbody>
 <tr class="grp"><td colspan="4">Purchased / found</td></tr>
 <tr><td>MPU-6050 accelerometer/gyro</td><td>1</td><td>Amazon</td><td>$3.33</td></tr>
@@ -103,22 +77,16 @@
 <tr><td>Sandpaper, hot glue, electrical tape</td><td>-</td><td>Anderson Labs</td><td>$0.00</td></tr>
 <tr class="total"><td colspan="3">Total</td><td>$39.54</td></tr></tbody></table></div>
 
-    <h2>Control</h2>
-    <p>The IMU gives tilt angle and angular rate; a PID loop on the Arduino turns that into a motor command for the reaction wheel. The wheel's angular acceleration produces the counter-torque that pushes the frame back toward upright.</p>
+<h2>Problems I ran into</h2>
+<p>At first the brushless motor wouldn't respond to its driver at all. Instead of changing the balance code again, I wrote a separate test program that drove each control line on its own, and found that the supplier had swapped the PWM, direction and start signals compared with their own documentation. After rewiring to the real pin-out, the motor worked.</p>
+<p>Once it balanced, I reinforced the frame and added an MG996R servo to steer the front wheel, a 28BYJ-48 stepper on the rear wheel (written non-blocking so it never holds up the balance loop), a servo kickstand that retracts on its own for hands-free starts, and voltage regulation.</p>
 
-    <h2>What went wrong, and what I did about it</h2>
-    <p>The brushless motor would not respond to its driver. Rather than keep changing the balance code, I wrote an isolated motor test program that exercised each control line on its own, and found the supplier had swapped the PWM, direction and start signal assignments against their own documentation. Rewiring to the true pin-out restored control. After the first balancing runs I reinforced the frame, then added an MG996R servo to steer the front wheel, a 28BYJ-48 stepper for rear-wheel propulsion written non-blocking so the balance loop is never starved, a servo-actuated kickstand that retracts automatically for hands-free launches, and voltage regulation.</p>
+<div class="pager"><a href="./#projects">← All projects</a><a href="rc-plane.html">1-metre RC airliner →</a></div>
 
-    <nav class="pager"><a href="./"><span class="mono">← Back</span><b>All projects</b></a><a class="next" href="rc-plane.html"><span class="mono">Next project →</span><b>1-metre RC airliner</b></a></nav>
-  </div>
-
-  <footer class="site">
-    <span class="mono">© 2026 Ye Jiang · Minneapolis, MN</span>
-    <span class="right"><a href="resume/Ye_Jiang_Resume.pdf">Resume</a> &nbsp; <a href="https://www.linkedin.com/in/ye-jiang-102b5538a/">LinkedIn</a> &nbsp; <a href="mailto:jian1130@umn.edu">Email</a></span>
-  </footer>
+<footer class="site"><span>© 2026 Ye Jiang · Minneapolis, MN</span><a href="mailto:jian1130@umn.edu">jian1130@umn.edu</a><a href="https://www.linkedin.com/in/ye-jiang-102b5538a/">LinkedIn</a><a href="https://github.com/jiangye444">GitHub</a></footer>
 </main>
-<script>(function(){var b=document.querySelector('.theme-toggle');if(!b)return;var r=document.documentElement;var order=['auto','light','dark'];var label={auto:'Theme: auto (follows your system)',light:'Theme: light',dark:'Theme: dark'};
-function apply(m){r.setAttribute('data-theme-mode',m);if(m==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',m);b.title=label[m];b.setAttribute('aria-label','Colour theme: '+(m==='auto'?'automatic':m));try{if(m==='auto')localStorage.removeItem('theme');else localStorage.setItem('theme',m)}catch(e){}}
-apply(r.getAttribute('data-theme-mode')||'auto');b.addEventListener('click',function(){var c=r.getAttribute('data-theme-mode')||'auto';apply(order[(order.indexOf(c)+1)%3]);});})();</script>
+<script>(function(){var b=document.querySelector(".theme-toggle");if(!b)return;var r=document.documentElement;var order=["auto","light","dark"];var label={auto:"Theme: auto (follows your system)",light:"Theme: light",dark:"Theme: dark"};
+function apply(m){r.setAttribute("data-theme-mode",m);if(m==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",m);b.title=label[m];b.setAttribute("aria-label","Colour theme: "+(m==="auto"?"automatic":m));try{if(m==="auto")localStorage.removeItem("theme");else localStorage.setItem("theme",m)}catch(e){}}
+apply(r.getAttribute("data-theme-mode")||"auto");b.addEventListener("click",function(){var c=r.getAttribute("data-theme-mode")||"auto";apply(order[(order.indexOf(c)+1)%3]);});})();</script>
 </body>
 </html>
