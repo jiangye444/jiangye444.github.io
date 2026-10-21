@@ -39,9 +39,13 @@ header.site nav a:hover{color:var(--ink)}
 :root:not([data-theme-mode="light"]):not([data-theme-mode="dark"]) .theme-toggle .i-auto{display:block}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1fr;gap:40px;padding:56px 0 24px;align-items:center}
-@media(min-width:940px){.hero{grid-template-columns:1fr 1.05fr;gap:64px;padding:88px 0 40px}}
-.hero h1{font:400 clamp(52px,8vw,92px)/.95 var(--serif);letter-spacing:-.02em;margin:0 0 26px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:22px 64px;padding:56px 0 24px;align-items:end}
+@media(min-width:940px){.hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:88px 0 40px}}
+.hero > *{min-width:0}
+.hero h1{font:400 clamp(52px,8vw,92px)/.95 var(--serif);letter-spacing:-.02em;margin:0}
+@media(min-width:940px){.hero h1{padding-bottom:8px}}
+.hero .lead .actions{margin-bottom:4px}
+.hero .media-card{grid-column:1/-1;margin-top:22px}
 .hero .intro{font-size:clamp(17px,1.7vw,19.5px);line-height:1.6;color:var(--muted);margin:0 0 20px;max-width:34em}
 .hero .intro strong{color:var(--ink);font-weight:500}
 .hero .facts{color:var(--faint);font-size:14.5px;margin:0 0 30px}
@@ -55,8 +59,7 @@ header.site nav a:hover{color:var(--ink)}
 .actions .plain:hover{color:var(--ink)}
 .media-card{margin:0}
 .media-card .frame{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#000}
-.media-card video{width:100%;aspect-ratio:5/4;object-fit:cover}
-@media(max-width:939px){.media-card video{aspect-ratio:16/9}}
+.media-card video{width:100%;aspect-ratio:1200/484;object-fit:cover}
 .media-card figcaption{color:var(--faint);font-size:14px;margin-top:12px}
 
 /* sections */
