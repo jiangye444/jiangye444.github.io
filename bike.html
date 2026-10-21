@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reaction-wheel self-balancing bicycle · Ye Jiang</title>
+<meta name="description" content="A $39.54 bicycle that balances itself while standing still using a reaction wheel: SolidWorks design, 3D-printed and laser-cut parts, Arduino + MPU-6050 IMU, brushless motor, PID control in C++.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reaction-wheel self-balancing bicycle · Ye Jiang">
+<meta property="og:description" content="A $39.54 bicycle that balances itself while standing still. Designed, built, wired and programmed from scratch.">
+<meta property="og:image" content="https://jiangye444.github.io/img/bike-og.jpg">
+<meta property="og:url" content="https://jiangye444.github.io/bike.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="./">Ye Jiang</a>
+  <nav><a href="./#projects">Projects</a><a href="resume/Ye_Jiang_Resume.pdf">Resume</a><a href="./#contact">Contact</a></nav>
+</header>
+
+<section class="project-head">
+  <h1>Reaction-wheel self-balancing bicycle</h1>
+  <div class="sub">Spring 2026 · ME 2011, University of Minnesota · independent project · $39.54 in parts</div>
+</section>
+
+<figure>
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/UqLc3zL4h2Y" title="Reaction-wheel self-balancing bicycle demo" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  <figcaption>Holding balance on two wheels while standing still. The reaction wheel is the laser-cut disc at the centre of the frame.</figcaption>
+</figure>
+
+<div class="summary">
+  <h2>In 60 seconds</h2>
+  <ul>
+    <li><b>Goal:</b> a bicycle that stays upright while standing still, using a reaction wheel instead of steering.</li>
+    <li><b>Built:</b> SolidWorks model → 3D-printed frame parts on 608z bearings and a laser-cut reaction wheel → Arduino UNO + MPU-6050 IMU → Nidec 24H brushless motor driving the wheel → PID loop written in C++.</li>
+    <li><b>Result:</b> holds unassisted balance on two wheels while stationary (video above). Total parts cost $39.54.</li>
+    <li><b>Hardest bug:</b> the motor would not respond to its driver. An isolated test program showed the supplier had swapped the PWM, direction and start signals against their own documentation.</li>
+    <li><b>Then:</b> reinforced the frame, added servo steering, non-blocking stepper propulsion, a servo-actuated kickstand that retracts for hands-free launches, and voltage regulation.</li>
+  </ul>
+</div>
+
+<div class="facts">
+  <div class="fact"><b>$39.54</b><span>total parts cost</span></div>
+  <div class="fact"><b>1</b><span>person, start to finish</span></div>
+  <div class="fact"><b>PID</b><span>closed-loop control in C++</span></div>
+  <div class="fact"><b>IMU</b><span>MPU-6050 tilt sensing</span></div>
+</div>
+
+<h2>Why a reaction wheel</h2>
+<p>A stationary bicycle is an inverted pendulum: once it tips, gravity pulls it further. A reaction wheel fixes that without any forward motion. Spinning the wheel up in one direction pushes a reaction torque back on the frame in the other, so the controller can "catch" a tilt the instant the IMU sees it. The trade-off is that a wheel can only produce torque while it is accelerating, so the controller has to keep the wheel near its resting speed and act early rather than hard.</p>
+
+<h2>Design</h2>
+<div class="two">
+  <figure><img src="img/bike-cad.jpg" alt="SolidWorks model of the bicycle"><figcaption>SolidWorks assembly. Frame parts were sized for an FDM printer; the flywheel for the laser cutter.</figcaption></figure>
+  <figure><img src="img/bike-detail.jpg" alt="Reaction wheel, motor and electronics"><figcaption>Reaction wheel, brushless motor and the Arduino/IMU stack.</figcaption></figure>
+</div>
+<p>Everything was chosen to be cheap and makeable with the tools I had: printed structure running on 608z bearings, a laser-cut disc for the reaction wheel (no machining needed), an Arduino UNO for control, an MPU-6050 for tilt angle and rate, and a high-speed Nidec 24H brushless motor. The whole build came to $39.54.</p>
+
+<h2>Bill of materials</h2>
+<div class="bom"><table>
+<thead><tr><th>Part</th><th>Qty</th><th>Source</th><th>Cost</th></tr></thead><tbody>
+<tr class="grp"><td colspan="4">Purchased / found</td></tr>
+<tr><td>MPU-6050 accelerometer/gyro</td><td>1</td><td>Amazon</td><td>$3.33</td></tr>
+<tr><td>Rear wheel (rubber)</td><td>1</td><td>Ax-Man</td><td>$0.95</td></tr>
+<tr><td>LiPo battery (3S 11.1 V)</td><td>1</td><td>Amazon</td><td>$16.00</td></tr>
+<tr><td>Nidec 24H brushless motor</td><td>1</td><td>Amazon</td><td>$7.99</td></tr>
+<tr><td>Front wheel</td><td>1</td><td>Ax-Man</td><td>$3.95</td></tr>
+<tr><td>608z bearings</td><td>3</td><td>Amazon</td><td>$1.56</td></tr>
+<tr><td>MG996R servo</td><td>1</td><td>ECE Depot</td><td>$4.00</td></tr>
+<tr><td>LM2596 voltage regulator</td><td>1</td><td>Amazon</td><td>$1.60</td></tr>
+<tr class="grp"><td colspan="4">Fabricated (acrylic and PLA at $0.25/lb)</td></tr>
+<tr><td>Acrylic reaction wheel, laser-cut (30 g)</td><td>1</td><td>Anderson Labs</td><td>$0.02</td></tr>
+<tr><td>3D-printed second floor (56.7 g)</td><td>1</td><td>Anderson Labs</td><td>$0.03</td></tr>
+<tr><td>3D-printed rear stack (48.7 g)</td><td>1</td><td>Anderson Labs</td><td>$0.03</td></tr>
+<tr><td>3D-printed front stack (19.1 g)</td><td>1</td><td>Anderson Labs</td><td>$0.01</td></tr>
+<tr><td>3D-printed rear wheel core (73.2 g)</td><td>1</td><td>Anderson Labs</td><td>$0.04</td></tr>
+<tr><td>3D-printed lower board (30 g)</td><td>1</td><td>Anderson Labs</td><td>$0.02</td></tr>
+<tr><td>3D-printed stepper roller</td><td>1</td><td>Anderson Labs</td><td>$0.01</td></tr>
+<tr class="grp"><td colspan="4">ME 2011 kit (no cost)</td></tr>
+<tr><td>Arduino UNO R3</td><td>1</td><td>Course kit</td><td>$0.00</td></tr>
+<tr><td>28BYJ-48 5 V stepper + driver board</td><td>1</td><td>Course kit</td><td>$0.00</td></tr>
+<tr><td>Jumper wires</td><td>30</td><td>Course kit</td><td>$0.00</td></tr>
+<tr><td>Push button (start switch)</td><td>1</td><td>Course kit</td><td>$0.00</td></tr>
+<tr class="grp"><td colspan="4">Fasteners and consumables (no cost)</td></tr>
+<tr><td>M6 bolts and nuts</td><td>12</td><td>Anderson Labs</td><td>$0.00</td></tr>
+<tr><td>Sandpaper, hot glue, electrical tape</td><td>-</td><td>Anderson Labs</td><td>$0.00</td></tr>
+<tr class="total"><td colspan="3">Total</td><td>$39.54</td></tr></tbody></table></div>
+
+<h2>Control</h2>
+<p>The IMU gives tilt angle and angular rate; a PID loop on the Arduino turns that into a motor command for the reaction wheel. The wheel's angular acceleration produces the counter-torque that pushes the frame back toward upright.</p>
+
+<h2>What went wrong, and what I did about it</h2>
+<p>The brushless motor would not respond to its driver. Rather than keep changing the balance code, I wrote an isolated motor test program that exercised each control line on its own, and found the supplier had swapped the PWM, direction and start signal assignments against their own documentation. Rewiring to the true pin-out restored control. After the first balancing runs I reinforced the frame, then added an MG996R servo to steer the front wheel, a 28BYJ-48 stepper for rear-wheel propulsion written non-blocking so the balance loop is never starved, a servo-actuated kickstand that retracts automatically for hands-free launches, and voltage regulation.</p>
+
+<div class="pager"><a href="./">← Home</a><a href="rc-plane.html">Next: 1-metre RC airliner →</a></div>
+
+<footer class="site">
+  <a href="resume/Ye_Jiang_Resume.pdf">Resume</a><a href="https://www.linkedin.com/in/ye-jiang-102b5538a/">LinkedIn</a><a href="mailto:jian1130@umn.edu">jian1130@umn.edu</a>
+  <div>© 2026 Ye Jiang</div>
+</footer>
+</div>
+</body>
+</html>
